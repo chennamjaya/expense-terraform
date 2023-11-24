@@ -24,3 +24,11 @@ resource "aws_subnet" "private_subnets" {
     Name = "private-subnets-${count.index}"
   }
 }
+
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "${var.env}-igw"
+  }
+}
