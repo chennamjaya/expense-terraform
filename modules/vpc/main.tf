@@ -35,6 +35,9 @@ resource "aws_internet_gateway" "igw" {
 
 resource "aws_eip" "ngw" {
   domain   = "vpc"
+  tags = {
+    Name = "${var.env}-ngw"
+  }
 }
 
 resource "aws_nat_gateway" "ngw" {
@@ -94,13 +97,13 @@ resource "aws_route" "default_route_table" {
 }
 
 resource "aws_route_table_association" "public" {
-  count = length(var.public_subnet)
-  subnet_id      = aws_subnet.public_subnet[count.index].id
+  count = length(var.public_subnets)
+  subnet_id      = aws_subnet.public_subnets[count.index].id
   route_table_id = aws_route_table.public.id
 }
 
 resource "aws_route_table_association" "private" {
-  count = length(var.private_subnet)
-  gateway_id     = aws_internet_gateway.private_subnet[count.index].id
+  count = length(var.private_subnets)
+  subnet_id     = aws_subnet.private_subnets[count.index].id
   route_table_id = aws_route_table.private.id
 }
