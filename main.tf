@@ -32,7 +32,7 @@ module "private_lb" {
 }
 
 module "frontend" {
-  source = ./modules/app"
+  source = "./modules/app"
   app_port = 80
   component = frontend
   env = var.env
