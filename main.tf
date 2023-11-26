@@ -22,16 +22,16 @@ module "vpc" {
 #}
 
 module "private_lb" {
-  source = "./modules/alb"
+  source            = "./modules/alb"
   alb_sg_allow_cidr = var.vpc_cidr
-  alb_type = "private"
-  env = var.env
-  internal = true
-  subnets = module.vpc.private_subnets
-  vpc_id = module.vpc.vpc_id
-  dns_name = "backend-${var.env}.vaishnavidevops.online"
-  zone_id = "Z0933457MNFW7LZX9MNJ"
-  tg_arn = module.backend.tg_arn
+  alb_type          = "private"
+  env               = var.env
+  internal          = true
+  subnets           = module.vpc.private_subnets
+  vpc_id            = module.vpc.vpc_id
+  dns_name          = "backend-${var.env}.vaishnavidevops.online"
+  zone_id           = "Z0933457MNFW7LZX9MNJ"
+  tg_arn            = module.backend.tg_arn
 }
 
 #module "frontend" {
