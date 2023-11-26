@@ -59,8 +59,10 @@ resource "aws_iam_role" "role" {
 			   "Effect": "Allow",
 			   "Action": [
 				   "ssm:DescribeParameters",
-				  "ssm:GetParametersByPath",
-				  "ssm:GetParameters"
+           "ssm:GetParameterHistory",
+				   "ssm:GetParametersByPath",
+				   "ssm:GetParameters",
+           "ssm:GetParameter"
 			  ],
           Resource = "*"
         },
