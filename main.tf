@@ -47,6 +47,7 @@ module "private_lb" {
 # }
 
 module "backend" {
+  depends_on = [module.mysql] #this depends_on function is used so that this code will run ony after mysql
   source = "./modules/app"
   app_port = 8080
   component = "backend"
