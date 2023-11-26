@@ -11,7 +11,7 @@ resource "aws_security_group" "security_group" {
     cidr_blocks      = [var.vpc_cidr]
   }
 
-ingress {
+  ingress {
     description      = "SSH"
     from_port        = 22
     to_port          = 22
@@ -39,7 +39,7 @@ resource "aws_launch_template" "template" {
   user_data = base64encode(templatefile("${path.module}/userdata.sh", {
     role_name = var.component
   }))
-  
+
   tag_specifications {
     resource_type = "instance"
 
