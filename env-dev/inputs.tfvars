@@ -9,3 +9,7 @@ default_vpc_cidr       = "172.31.0.0/16"
 default_route_table_id = "rtb-03c2c7536a2ba77b5"
 account_no             = "851512651356"
 bastion_node_cidr      = [ "172.31.84.99/32" ]
+desired_capacity       = 1
+max_size               = 1
+min_size               = 1
+instance_class         = "db.t3.medium"
