@@ -19,6 +19,9 @@ module "public_lb" {
   internal = false
   subnets = module.vpc.public_subnets
   vpc_id = module.vpc.vpc_id
+  dns_name          = "backend-${var.env}.vaishnavidevops.online"
+  zone_id           = "Z0933457MNFW7LZX9MNJ"
+  tg_arn            = module.backend.tg_arn
 }
 
 module "private_lb" {
@@ -29,9 +32,9 @@ module "private_lb" {
   internal          = true
   subnets           = module.vpc.private_subnets
   vpc_id            = module.vpc.vpc_id
-  dns_name          = "backend-${var.env}.vaishnavidevops.online"
+  dns_name          = "${var.env}.vaishnavidevops.online"
   zone_id           = "Z0933457MNFW7LZX9MNJ"
-  tg_arn            = module.backend.tg_arn
+  tg_arn            = module.frontend.tg_arn
 }
 
 module "frontend" {
