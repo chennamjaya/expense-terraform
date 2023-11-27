@@ -48,7 +48,7 @@ resource "aws_lb_listener" "listener-http" {
   protocol          = "HTTP"
 
   default_action {
-    type = "forward"
+    type             = "forward"
     target_group_arn = var.tg_arn
   }
 }
