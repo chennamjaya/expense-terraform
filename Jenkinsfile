@@ -1,5 +1,9 @@
 pipeline {
   agent { label 'new-workstation'}
+
+  options {
+    ansiColor('xterm')
+  }
   
   parameters {
     choice(name: 'ENV', choices: ['dev', 'prod'], description: 'Choose Environment')
@@ -15,6 +19,9 @@ pipeline {
     }
 
    stage('Terraform Apply') {
+      input {
+        message "Should we continue?"
+    }
       steps {
         sh 'terraform ${ACTION} -var-file=env-${ENV}/inputs.tfvars -auto-approve'
       }
