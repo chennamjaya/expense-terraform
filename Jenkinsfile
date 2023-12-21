@@ -13,8 +13,11 @@ pipeline {
      
     stage('Terraform Plan') {
       steps {
-        sh "terraform init -backend-config=env-${env}/state.tfvars"
-        sh "terraform plan -var-file=env-${env}/inputs.tfvars"
+        script {
+          def env = params.ENV
+          sh "terraform init -backend-config=env-${env}/state.tfvars"
+          sh "terraform plan -var-file=env-${env}/inputs.tfvars"
+        }
       }
     }
 
@@ -23,8 +26,12 @@ pipeline {
         message "Should we continue?"
     }
       steps {
-        input(message: "Should we continue?")
-        sh "terraform ${action} -var-file=env-${env}/inputs.tfvars -auto-approve"
+        script {
+          def env = params.ENV
+          def action = params.ACTION
+          input(message: "Should we continue?")
+          sh "terraform ${action} -var-file=env-${env}/inputs.tfvars -auto-approve"
+        }
       }
     }
   }
