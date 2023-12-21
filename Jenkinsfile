@@ -27,6 +27,7 @@ pipeline {
           def env = params.ENV
           def action = params.ACTION
           //input(message: "Should we continue?")
+          sh "rm -rf .terraform"
           sh "terraform ${action} -var-file=env-${env}/inputs.tfvars -auto-approve"
         }
       }
