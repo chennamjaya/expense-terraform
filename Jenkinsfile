@@ -15,6 +15,7 @@ pipeline {
       steps {
         script {
           def env = params.ENV
+          sh "rm -rf .terraform"
           sh "terraform init -backend-config=env-${env}/state.tfvars"
           sh "terraform plan -var-file=env-${env}/inputs.tfvars"
         }
@@ -27,7 +28,6 @@ pipeline {
           def env = params.ENV
           def action = params.ACTION
           //input(message: "Should we continue?")
-          sh "rm -rf .terraform"
           sh "terraform ${action} -var-file=env-${env}/inputs.tfvars -auto-approve"
         }
       }
