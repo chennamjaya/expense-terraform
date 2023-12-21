@@ -22,14 +22,11 @@ pipeline {
     }
 
    stage('Terraform Apply') {
-      //input {
-        //message "Should we continue?"
-    //}
       steps {
         script {
           def env = params.ENV
           def action = params.ACTION
-          input(message: "Should we continue?")
+          //input(message: "Should we continue?")
           sh "terraform ${action} -var-file=env-${env}/inputs.tfvars -auto-approve"
         }
       }
