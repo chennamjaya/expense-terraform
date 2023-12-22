@@ -42,6 +42,14 @@ resource "aws_lb" "alb" {
   }
 }
 
+resource "aws_route53_record" "www" {
+  zone_id = var.zone_id
+  name    = var.dns_name
+  type    = "CNAME"
+  ttl     = 300
+  records = [aws_lb.alb.dns_name]
+}
+
 resource "aws_lb_listener" "listener-http-public" {
   count             = var.alb_type == "public" ? 1 : 0
   load_balancer_arn = aws_lb.alb.arn
