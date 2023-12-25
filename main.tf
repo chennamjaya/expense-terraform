@@ -37,6 +37,7 @@ module "private_lb" {
   tg_arn            = module.backend.tg_arn
 }
 
+/* 
 module "frontend" {
   source = "./modules/app"
   app_port = 80
@@ -79,3 +80,4 @@ module "mysql" {
   subnets = module.vpc.private_subnets
   instance_class         = var.instance_class
 }
+*/
