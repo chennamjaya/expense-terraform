@@ -11,7 +11,7 @@ module "vpc" {
   default_route_table_id = var.default_route_table_id 
 }
 
-/* 
+
 module "public_lb" {
   source            = "./modules/alb"
   alb_sg_allow_cidr = "0.0.0.0/0"
@@ -53,6 +53,7 @@ module "frontend" {
   max_size           = var.max_size
   min_size           = var.min_size
   prometheus_cidr   = var.prometheus_cidr
+  kms_key_id = var.kms_key_id
 }
 
 module "backend" {
@@ -70,8 +71,9 @@ module "backend" {
   max_size           = var.max_size
   min_size           = var.min_size
   prometheus_cidr   = var.prometheus_cidr
+  kms_key_id = var.kms_key_id
 }
-*/
+
 module "mysql" {
   source = "./modules/rds"
   component = "mysql"
