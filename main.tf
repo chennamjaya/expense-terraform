@@ -71,7 +71,7 @@ module "backend" {
   min_size           = var.min_size
   prometheus_cidr   = var.prometheus_cidr
 }
-
+*/
 module "mysql" {
   source = "./modules/rds"
   component = "mysql"
@@ -80,5 +80,5 @@ module "mysql" {
   vpc_id = module.vpc.vpc_id
   subnets = module.vpc.private_subnets
   instance_class         = var.instance_class
+  kms_key_id = var.kms_key_id
 }
-*/
