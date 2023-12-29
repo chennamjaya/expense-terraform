@@ -11,7 +11,7 @@ module "vpc" {
   default_route_table_id = var.default_route_table_id 
 }
 
-
+/*
 module "public_lb" {
   source            = "./modules/alb"
   alb_sg_allow_cidr = "0.0.0.0/0"
@@ -84,3 +84,4 @@ module "mysql" {
   instance_class         = var.instance_class
   kms_key_id = var.kms_key_id
 }
+*/
