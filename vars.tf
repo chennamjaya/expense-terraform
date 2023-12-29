@@ -14,3 +14,4 @@ variable "min_size" {}
 variable "instance_class" {}
 variable "prometheus_cidr" {}
 variable "kms_key_id" {}
+variable "project_name" {}
