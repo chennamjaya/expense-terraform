@@ -73,7 +73,7 @@ module "backend" {
   prometheus_cidr   = var.prometheus_cidr
   kms_key_id = var.kms_key_id
 }
-
+*/
 module "mysql" {
   source = "./modules/rds"
   component = "mysql"
@@ -84,7 +84,6 @@ module "mysql" {
   instance_class         = var.instance_class
   kms_key_id = var.kms_key_id
 }
-*/
 
 module "eks" {
   source = "./modules/eks"
