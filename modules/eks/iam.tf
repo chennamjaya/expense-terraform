@@ -208,3 +208,7 @@ resource "aws_iam_role" "schema-eks-sa" {
   }
 
 }
+
+output "extracted_arn_segment" {
+  value = split("/", aws_eks_cluster.main.identity[0].oidc[0].issuer)[4]
+}
